@@ -96,6 +96,10 @@ function create_groups() {
 
   compute();
 
+  let size_input = document.getElementById("size_of_group");
+  if (size_input)
+    size = size_input.value;
+
   people.forEach(person => {
     groups.forEach(group => {
       if (person && group.length < size) {
@@ -189,7 +193,7 @@ function personColor(person) {
 function renderRound() {
   let target = E("div");
   E("div", target).innerHTML = `Kolo #${rounds.length + 1}`;
-  E("div", target).innerHTML = `<input type="number" value="${size}"/>`;
+  E("div", target).innerHTML = `<input id="size_of_group" type="number" value="${size}"/>`;
   let gbutton = E("button", target);
   gbutton.innerHTML = 'Vytvořit skupiny automaticky';
   gbutton.onclick = create_groups;
